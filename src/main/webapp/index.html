@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Listado de usaurios</title>
+<link rel="stylesheet" href="style.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg bg-primary">
+			<div id="tituloNav" class="container-fluid">
+			  <h2>LISTADO DE USUARIOS</h2>
+			</div>
+		  </nav>
+	</header>
+
+	<section>
+	<div class="container-fluid" id="divTabla">
+	
+		<table class="table"id="tblUsers">
+			<thead>
+				<tr>
+					<th>NOMBRE</th>
+					<th>APELLIDO</th>
+					<th>TIPO</th>
+					<th>ESTADO</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		<a class="btn btn-success form-control " href="UserController?accion=agregar" >agregar</a>
+	</div>
+	</section>
+	<footer>
+		<div class="container-fluid bg-primary">
+			<label> Batubasilio@hotmail.com</label>
+		</div>
+	</footer>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+
+			$.ajax({
+				beforeSend: function(req){
+					req.setRequestHeader("Content-Type",'application/json');
+					req.setRequestHeader("Accept","application/json")
+				},
+				dataType:"json",//TIPO DE DATO A LEER
+				url:'http://localhost:8080/entrega6/UserApi',//DIRECCION DE LA API
+				success:function(data){ // SI TODO SALE CORRECTO
+
+					for (let i=0; i < data.length;i++){
+						let dato = data[i];
+
+						let tabla = document.getElementById('tblUsers');
+						let cuerpoTabla = tabla.getElementsByTagName('tbody')[0];
+				
+						let columna = cuerpoTabla.insertRow();
+				
+						let clNombre = columna.insertCell(0);
+						let clApellido = columna.insertCell(1);
+						let clTipo= columna.insertCell(2);
+						let clEstado = columna.insertCell(3);
+				
+						clNombre.innerText = dato.nombre
+						clApellido.innerHTML = dato.apellido
+						clTipo.innerHTML = dato.tipo
+						clEstado.innerHTML = dato.estado
+
+					}
+
+				}
+
+			})	
+					
+		})	
+	</script>
+</body>
+
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alta usuario</title>
+<link rel="stylesheet" href="style.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg bg-primary">
+			<div id="tituloNav" class="container-fluid">
+			
+					<h2>ALTA USUARIO</h2>
+				
+			</div>
+		  </nav>
+	</header>
+	<section>
+		
+		<div class="card">
+			<h5 class="card-header">Datos</h5>
+			<div class="card-body">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-6"> 
+							
+							<form  action="UserController?accion=nuevo" method="POST">
+
+								<label>NOMBRE:</label>
+								<br>
+								<input class="form-control" type="text" placeholder="nombre" name="nombre" required>
+								<br>
+								<label>APELLIDO:</label>
+								<br>
+								<input class="form-control" type="text" placeholder="apellido" name="apellido" required>
+								<br>
+								<label>TIPO:</label>
+								<br>
+								<!--<input name="tipo" type="text" class="form-control" ></select>
+								<input name="estado"type="text" class="form-control" ></select>-->
+								<select name="tipo"class="form-control"  required>
+									<option>ADMIN</option>
+									<option>USUARIO</option>
+								</select>
+								<br>
+								<label>ESTADO:</label>
+								<br>
+								<select name="estado" class="form-control"  required>
+									<option>ACTIVO</option>
+									<option>INACTIVO</option>
+								</select>
+								<br>
+								<input class="btn btn-success" type="submit" value="Agregar">
+							</form>
+						</div>
+						<div id="img-user" class="col-6">
+							<div class="container-fluid">
+								<img src="./image/user.png" width="200">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+		
+
+	</section>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+	
+</body>
+</html>
